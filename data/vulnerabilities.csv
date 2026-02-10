@@ -1,0 +1,4 @@
+vuln_id,asset_id,cve_id,severity_cvss,exploitability,known_exploit,days_open,source,notes
+V-001,A-002,CVE-2023-XXXXX,9.8,5,yes,30,scanner,"Remote code execution risk"
+V-002,A-001,CVE-2022-YYYYY,7.2,3,no,120,scanner,"Patch available"
+V-003,A-003,CVE-2021-ZZZZZ,8.1,4,yes,10,manual,"Observed suspicious activity"
