@@ -1,0 +1,4 @@
+asset_id,asset_name,asset_type,business_criticality,data_sensitivity,exposure,owner,notes
+A-001,HR Laptop 12,laptop,3,3,internal,HR,"Contains employee PII"
+A-002,Public Web Server,server,5,4,external,IT,"Customer-facing website"
+A-003,Finance Shared Drive,storage,5,5,internal,Finance,"Quarterly reports and payroll"
