@@ -9,7 +9,9 @@ import uuid
 from datetime import datetime
 
 from ingest import load_data
-from scoring import score_vulnerabilities
+from scoring import score_vulnerabilities, categorize_risk, escalation_decision
+
+
 
 
 
@@ -27,6 +29,15 @@ def main() -> None:
     # Apply risk scoring
     scored_df = score_vulnerabilities(merged_df)
 
+    # Apply rule-based categorization
+    scored_df["risk_category"] = scored_df.apply(categorize_risk, axis=1)
+
+    scored_df[["escalation_flag", "escalation_reason"]] = scored_df.apply(
+    lambda row: pd.Series(escalation_decision(row)),
+    axis=1
+)
+
+
     # Select and order output columns
     output_cols = [
         "asset_id",
@@ -41,6 +52,9 @@ def main() -> None:
         "exposure",
         "risk_score",
         "risk_level",
+        "risk_category",
+        "escalation_flag",
+        "escalation_reason"
     ]
     scored_df = scored_df[output_cols]
 

@@ -61,3 +61,57 @@ def score_vulnerabilities(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
+
+def categorize_risk(row: pd.Series) -> str:
+    """
+    Rule-based categorization to make triage more explainable.
+    Uses existing columns from the merged dataframe.
+    """
+    cvss = float(row.get("severity_cvss", 0))
+    exposure = str(row.get("exposure", "")).lower().strip()
+    exploitability = float(row.get("exploitability", 0))
+    business_criticality = float(row.get("business_criticality", 0))
+    data_sensitivity = float(row.get("data_sensitivity", 0))
+
+    # 1) Very high technical severity
+    if cvss >= 9:
+        return "Critical Infrastructure"
+
+    # 2) External + meaningfully exploitable + high severity
+    if exposure == "external" and cvss >= 7 and exploitability >= 7:
+        return "Network Exposure"
+
+    # 3) Likely exploitable regardless of exposure
+    if exploitability >= 8:
+        return "Exploitable Vulnerability"
+
+    # 4) High business impact drivers
+    if business_criticality >= 8 or data_sensitivity >= 8:
+        return "High Business Impact"
+
+    return "General Risk"
+
+
+def escalation_decision(row: pd.Series) -> tuple[str, str]:
+    """
+    Determines whether a vulnerability requires escalation
+    and provides a short justification.
+    """
+    risk_level = row.get("risk_level", "")
+    exposure = str(row.get("exposure", "")).lower().strip()
+    business_criticality = float(row.get("business_criticality", 0))
+    exploitability = float(row.get("exploitability", 0))
+
+    if risk_level == "Critical":
+        return "Yes", "Critical risk level"
+
+    if risk_level == "High" and exposure == "external":
+        return "Yes", "High risk on external asset"
+
+    if business_criticality >= 8:
+        return "Yes", "High business impact"
+
+    if exploitability >= 8:
+        return "Yes", "Highly exploitable vulnerability"
+
+    return "No", "Does not meet escalation criteria"
