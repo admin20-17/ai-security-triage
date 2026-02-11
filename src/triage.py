@@ -48,6 +48,11 @@ def main() -> None:
     print("ROWS:", len(scored_df))
 
     # ---- Final output polish ----
+run_id = str(uuid.uuid4())
+generated_at = datetime.now().isoformat(timespec="seconds")
+
+scored_df.insert(0, "run_id", run_id)
+scored_df.insert(1, "generated_at", generated_at)
 
 # Stable sorting (highest risk first)
 scored_df = scored_df.sort_values(
@@ -56,7 +61,8 @@ scored_df = scored_df.sort_values(
 )
 
 # Lock column order
-COL_ORDER = ["vuln_id", "risk_score", "risk_level"]
+COL_ORDER = ["run_id", "generated_at", "vuln_id", "risk_score", "risk_level"]
+
 scored_df = scored_df[COL_ORDER]
 
 # Write results
