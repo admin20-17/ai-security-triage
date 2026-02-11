@@ -93,12 +93,8 @@ if show_cols and "risk_score" in scored_df.columns:
 
 scored_df.to_csv(output_path, index=False)
 
+print(f"\nResults written to: {output_path}")
 
-    print("\n✅ Triage complete.")
-    print(f"Results written to: {output_path}")
-    print(scored_df[["vuln_id", "risk_score", "risk_level"]].sort_values(
-        by="risk_score", ascending=False
-    ).to_string(index=False))
 
 
 if __name__ == "__main__":
