@@ -5,9 +5,12 @@ triage.py
 
 from pathlib import Path
 import pandas as pd
+import uuid
+from datetime import datetime
 
 from ingest import load_data
 from scoring import score_vulnerabilities
+
 
 
 def main() -> None:
