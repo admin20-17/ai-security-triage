@@ -44,11 +44,25 @@ def main() -> None:
     print("COLUMNS:", list(scored_df.columns))
     print("ROWS:", len(scored_df))
 
-    # Write results
-    repo_root = Path(__file__).resolve().parents[1]
-    output_path = repo_root / "output" / "results.csv"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    scored_df.to_csv(output_path, index=False)
+    # ---- Final output polish ----
+
+# Stable sorting (highest risk first)
+scored_df = scored_df.sort_values(
+    by=["risk_score", "vuln_id"],
+    ascending=[False, True]
+)
+
+# Lock column order
+COL_ORDER = ["vuln_id", "risk_score", "risk_level"]
+scored_df = scored_df[COL_ORDER]
+
+# Write results
+repo_root = Path(__file__).resolve().parents[1]
+output_path = repo_root / "output" / "results.csv"
+output_path.parent.mkdir(parents=True, exist_ok=True)
+
+scored_df.to_csv(output_path, index=False)
+
 
     print("\n✅ Triage complete.")
     print(f"Results written to: {output_path}")
