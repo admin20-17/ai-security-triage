@@ -70,6 +70,27 @@ repo_root = Path(__file__).resolve().parents[1]
 output_path = repo_root / "output" / "results.csv"
 output_path.parent.mkdir(parents=True, exist_ok=True)
 
+# ---- Console summary ----
+print("\nTriage complete.")
+print(f"Rows scored: {len(scored_df)}")
+
+if "risk_level" in scored_df.columns:
+    counts = scored_df["risk_level"].value_counts()
+    print("\nFindings by risk_level:")
+    for level, cnt in counts.items():
+        print(f"  {level}: {cnt}")
+
+show_cols = [c for c in ["asset_id", "vuln_id", "cve_id", "risk_score", "risk_level"] if c in scored_df.columns]
+if show_cols and "risk_score" in scored_df.columns:
+    print("\nTop findings:")
+    print(
+        scored_df[show_cols]
+        .sort_values("risk_score", ascending=False)
+        .head(5)
+        .to_string(index=False)
+    )
+
+
 scored_df.to_csv(output_path, index=False)
 
 
