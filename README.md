@@ -8,27 +8,27 @@ This project simulates a realistic security triage workflow used by SOC and vuln
 
 🎯 What This Project Does
 
-Merges asset context with vulnerability findings
+- Merges asset context with vulnerability findings
 
-Applies weighted, explainable risk scoring
+- Applies weighted, explainable risk scoring
 
-Assigns human-readable risk tiers (Critical / High / Medium / Low)
+- Assigns human-readable risk tiers (Critical / High / Medium / Low)
 
-Categorizes risk type (e.g., Network Exposure, Business Impact)
+- Categorizes risk type (e.g., Network Exposure, Business Impact)
 
-Flags escalation scenarios with justification
+- Flags escalation scenarios with justification
 
-Produces decision-ready, sorted output
+- Produces decision-ready, sorted output
 
 ⚙️ How It Works
 
 1️⃣ Ingestion
 
-Loads assets.csv
+- Loads assets.csv
 
-Loads vulnerabilities.csv
+- Loads vulnerabilities.csv
 
-Merges on asset_id
+- Merges on asset_id
 
 2️⃣ Risk Scoring Model
 
@@ -41,9 +41,9 @@ Risk score is calculated as:
 
 Where:
 
-External exposure adds additional weight
+- External exposure adds additional weight
 
-Output is rounded to an integer
+- Output is rounded to an integer
 
 3️⃣ Risk Tier Mapping
 
@@ -57,33 +57,33 @@ Score	Risk Level
 
 Rule-based tagging for explainability:
 
-Critical Infrastructure
+- Critical Infrastructure
 
-Network Exposure
+- Network Exposure
 
-Exploitable Vulnerability
+- Exploitable Vulnerability
 
-High Business Impact
+- High Business Impact
 
-General Risk
+- General Risk
 
 5️⃣ Escalation Logic
 
 A vulnerability is escalated if:
 
-Risk level is Critical
+- Risk level is Critical
 
-High risk on an external asset
+- High risk on an external asset
 
-Business criticality ≥ 8
+- Business criticality ≥ 8
 
-Exploitability ≥ 8
+- Exploitability ≥ 8
 
 Output includes:
 
-escalation_flag
+- escalation_flag
 
-escalation_reason
+- escalation_reason
 
 📊 Output
 
@@ -94,31 +94,31 @@ output/results.csv
 
 Columns include:
 
-run_id
+- run_id
 
-generated_at
+- generated_at
 
-Asset context fields
+- Asset context fields
 
-risk_score
+- risk_score
 
-risk_level
+- risk_level
 
-risk_category
+- risk_category
 
-escalation_flag
+- escalation_flag
 
-escalation_reason
+- escalation_reason
 
 Results are sorted by highest risk first.
 
 Console summaries display:
 
-Total rows scored
+- Total rows scored
 
-Findings by risk level
+- Findings by risk level
 
-Top prioritized vulnerabilities
+- Top prioritized vulnerabilities
 
 🚀 Quick Start
 pip install -r requirements.txt
@@ -146,24 +146,24 @@ ai-security-triage/
 
 🧠 Design Principles
 
-Deterministic and explainable logic (no black-box scoring)
+- Deterministic and explainable logic (no black-box scoring)
 
-Modular architecture
+- Modular architecture
 
-Reproducible output
+- Reproducible output
 
-Clear separation of ingestion, scoring, and orchestration
+- Clear separation of ingestion, scoring, and orchestration
 
-Portfolio-ready structure
+- Portfolio-ready structure
 
 🔮 Future Enhancements
 
-Docker containerization
+- Docker containerization
 
-REST API interface
+- REST API interface
 
-Lightweight dashboard
+- Lightweight dashboard
 
-Extended scoring weight configuration
+- Extended scoring weight configuration
 
-CI pipeline integration
+- CI pipeline integration
