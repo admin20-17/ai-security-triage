@@ -21,6 +21,7 @@ Flags escalation scenarios with justification
 Produces decision-ready, sorted output
 
 ⚙️ How It Works
+
 1️⃣ Ingestion
 
 Loads assets.csv
@@ -45,11 +46,13 @@ External exposure adds additional weight
 Output is rounded to an integer
 
 3️⃣ Risk Tier Mapping
+
 Score	Risk Level
 ≥ 75	Critical
 ≥ 50	High
 ≥ 25	Medium
 < 25	Low
+
 4️⃣ Risk Categorization
 
 Rule-based tagging for explainability:
