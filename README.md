@@ -167,3 +167,19 @@ ai-security-triage/
 - Extended scoring weight configuration
 
 - CI pipeline integration
+
+
+## Run with Docker (Windows)
+
+### Prerequisites
+- Docker Desktop installed and running
+
+### Run the Project
+From the root of the repository:
+
+powershell -ExecutionPolicy Bypass -File .\run_docker.ps1
+
+### Output
+Results will be written to:
+
+output/results.csv
