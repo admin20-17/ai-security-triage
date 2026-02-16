@@ -1,4 +1,4 @@
 run_id,generated_at,asset_id,asset_name,asset_type,vuln_id,cve_id,severity_cvss,exploitability,business_criticality,data_sensitivity,exposure,risk_score,risk_level,risk_category,escalation_flag,escalation_reason
-5152002b-2930-40e9-8cf8-dc7369c77584,2026-02-11T17:00:36,A-002,Public Web Server,server,V-001,CVE-2023-XXXXX,9.8,5,5,4,external,74,High,Critical Infrastructure,Yes,High risk on external asset
-5152002b-2930-40e9-8cf8-dc7369c77584,2026-02-11T17:00:36,A-003,Finance Shared Drive,storage,V-003,CVE-2021-ZZZZZ,8.1,4,5,5,internal,57,High,General Risk,No,Does not meet escalation criteria
-5152002b-2930-40e9-8cf8-dc7369c77584,2026-02-11T17:00:36,A-001,HR Laptop 12,laptop,V-002,CVE-2022-YYYYY,7.2,3,3,3,internal,31,Medium,General Risk,No,Does not meet escalation criteria
+2d95e7db-1eda-4795-995e-3aa026f4b828,2026-02-13T00:49:12,A-002,Public Web Server,server,V-001,CVE-2023-XXXXX,9.8,5,5,4,external,74,High,Critical Infrastructure,Yes,High risk on external asset
+2d95e7db-1eda-4795-995e-3aa026f4b828,2026-02-13T00:49:12,A-003,Finance Shared Drive,storage,V-003,CVE-2021-ZZZZZ,8.1,4,5,5,internal,57,High,General Risk,No,Does not meet escalation criteria
+2d95e7db-1eda-4795-995e-3aa026f4b828,2026-02-13T00:49:12,A-001,HR Laptop 12,laptop,V-002,CVE-2022-YYYYY,7.2,3,3,3,internal,31,Medium,General Risk,No,Does not meet escalation criteria
