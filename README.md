@@ -4,8 +4,7 @@ This repository demonstrates a containerized vulnerability prioritization pipeli
 
 The system moves beyond raw CVSS scoring by incorporating business impact, asset exposure, and operational context into a unified risk score. 
 
-I designed the scoring logic, structured the repository for collaborative use, and containerized the tool with Docker so teammates could deploy and test the pipeline consistently across environments.
-
+In this project, I contributed to testing, deployment, and refinement of the triage pipeline, helping validate results and ensure the tool could be executed reliably in a team environment.
 
 
 
